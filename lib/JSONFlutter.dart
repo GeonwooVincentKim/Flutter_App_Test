@@ -20,6 +20,7 @@ List<Photo> parsePhotos(String responseBody) {
   return parsed.map<Photo>((json) => Photo.fromJson(json)).toList();
 }
 
+
 class Photo {
   final int albumId;
   final int id;
