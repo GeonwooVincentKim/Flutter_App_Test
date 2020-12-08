@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app_test/theme_design/body.dart';
 import 'package:provider/provider.dart';
+import 'package:get/get.dart';
 
 
 void main() => runApp(MyApp());

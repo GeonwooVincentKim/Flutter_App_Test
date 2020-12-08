@@ -20,8 +20,15 @@ class Body extends StatelessWidget{
       padding: EdgeInsets.all(20.0),
       color: Colors.white70,
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          
+          Center(
+            child: Text(
+              "System Brightness : "
+              // "System Brightness: ${MediaQuery.platformBrightnessOf(context)}"
+            )
+          )
         ],
       )
     );
