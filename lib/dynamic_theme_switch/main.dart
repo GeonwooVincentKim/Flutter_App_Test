@@ -10,29 +10,29 @@ void main() => runApp(MyApp());
 class MyApp extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
-    return Body();
-    // return MultiProvider(
-    //   providers: [
+    // return Body();
+    return MultiProvider(
+      providers: [
 
-    //   ],
-    //   child: MaterialApp(
-    //     theme: _light ? _lightTheme : _darkTheme,
-    //     title: "Test",
-    //     routes: {
-    //       "/": (context) => Body(),
-    //     },
-    //     initialRoute: "/",
-    //     onGenerateRoute: (settings) {
-    //       final List<String> routeGenerator = settings.name.split("/");
-    //       if(routeGenerator[0] != '') return null;
-    //       if(routeGenerator[1] == '/detail'){
-    //         String detailID = routeGenerator[2];
-    //         return MaterialPageRoute(builder: (BuildContext context) => Detail(detailID: detailID));
-    //       }
-    //     },
-    //     onUnknownRoute: (settings) => MaterialPageRoute(builder: (BuildContext context) => Body()),
-    //   )
-    // );
+      ],
+      child: MaterialApp(
+        theme: _light ? _lightTheme : _darkTheme,
+        title: "Test",
+        routes: {
+          "/": (context) => Body(),
+        },
+        initialRoute: "/",
+        onGenerateRoute: (settings) {
+          final List<String> routeGenerator = settings.name.split("/");
+          if(routeGenerator[0] != '') return null;
+          if(routeGenerator[1] == '/detail'){
+            String detailID = routeGenerator[2];
+            return MaterialPageRoute(builder: (BuildContext context) => Detail(detailID: detailID));
+          }
+        },
+        onUnknownRoute: (settings) => MaterialPageRoute(builder: (BuildContext context) => Body()),
+      )
+    );
   }
 }
 

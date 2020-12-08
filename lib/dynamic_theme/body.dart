@@ -12,6 +12,7 @@ class Body extends StatefulWidget {
 }
 
 class _BodyState extends State<Body> {
+  bool _isChange = true;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,6 +23,10 @@ class _BodyState extends State<Body> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            Switch(
+              value: _isChange,
+              onChanged: (state) => setState((){_isChange = state;}),
+            ),
             RaisedButton(
               onPressed: changeBrightness,
               child: const Text("Change brightness"),
@@ -57,6 +62,7 @@ class _BodyState extends State<Body> {
               DynamicTheme.of(context).setBrightness(brightness);
             },
           );
+          // return Switch();
         });
   }
 
