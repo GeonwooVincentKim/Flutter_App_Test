@@ -10,27 +10,29 @@ void main() => runApp(MyApp());
 class MyApp extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
-      providers: [
+    return Body();
+    // return MultiProvider(
+    //   providers: [
 
-      ],
-      child: MaterialApp(
-        theme: _light ? _lightTheme : _darkTheme,
-        routes: {
-          "/": (context) => Body(),
-        },
-        initialRoute: "/",
-        onGenerateRoute: (settings) {
-          final List<String> routeGenerator = settings.name.split("/");
-          if(routeGenerator[0] != '') return null;
-          if(routeGenerator[1] == '/detail'){
-            String detailID = routeGenerator[2];
-            return MaterialPageRoute(builder: (BuildContext context) => Detail(detailID: detailID));
-          }
-        },
-        onUnknownRoute: (settings) => MaterialPageRoute(builder: (BuildContext context) => Body()),
-      )
-    );
+    //   ],
+    //   child: MaterialApp(
+    //     theme: _light ? _lightTheme : _darkTheme,
+    //     title: "Test",
+    //     routes: {
+    //       "/": (context) => Body(),
+    //     },
+    //     initialRoute: "/",
+    //     onGenerateRoute: (settings) {
+    //       final List<String> routeGenerator = settings.name.split("/");
+    //       if(routeGenerator[0] != '') return null;
+    //       if(routeGenerator[1] == '/detail'){
+    //         String detailID = routeGenerator[2];
+    //         return MaterialPageRoute(builder: (BuildContext context) => Detail(detailID: detailID));
+    //       }
+    //     },
+    //     onUnknownRoute: (settings) => MaterialPageRoute(builder: (BuildContext context) => Body()),
+    //   )
+    // );
   }
 }
 
@@ -50,7 +52,10 @@ ThemeData _lightTheme = ThemeData(
 ThemeData _darkTheme = ThemeData(
   accentColor: Colors.red,
   brightness: Brightness.dark,
-  primaryColor: Colors.amber
+  primaryColor: Colors.amber,
+  buttonTheme: ButtonThemeData(
+    buttonColor: Colors.amber
+  )
 );
 
 bool _light = true;
@@ -69,19 +74,40 @@ class _BodyState extends State<Body> {
 
   Widget _buildBody(){
     return Center(
-      child: Switch(value: _light, onChanged: (state){
-        setState(() {
-          _light = state;
-        });
-      }),
+      child: Column(
+        children: [
+          TextField(
+            decoration: InputDecoration(
+              labelText: "Enter Name"
+            )
+          ),
+          RaisedButton(
+            child: Text("Click"),
+            onPressed: (){
+              
+            }
+          ),
+          Switch(value: _light, onChanged: (state){
+            setState(() {
+              _light = state;
+            });
+          }),
+        ],
+      ),
     );
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: _buildAppBar(),
-      body: _buildBody(),
+    return MaterialApp(
+      title: "Test",
+      theme: _light ? _lightTheme : _darkTheme,
+      darkTheme: _darkTheme,
+      home: Scaffold(
+        // appBar: _buildAppBar(),
+        appBar: AppBar(title: Text("BodyBody"), centerTitle: true),
+        body: _buildBody(),
+      )
     );
   }
 }
