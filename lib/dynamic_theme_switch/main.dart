@@ -64,7 +64,7 @@ class _BodyState extends State<Body> {
   Widget _buildAppBar(){
     return AppBar(
       title: Text("BodyBody"),
-      backgroundColor: Colors.white,
+      // backgroundColor: _light ? _lightTheme : _darkTheme,
       centerTitle: true,
       actions: [
 
@@ -104,8 +104,8 @@ class _BodyState extends State<Body> {
       theme: _light ? _lightTheme : _darkTheme,
       darkTheme: _darkTheme,
       home: Scaffold(
-        // appBar: _buildAppBar(),
-        appBar: AppBar(title: Text("BodyBody"), centerTitle: true),
+        appBar: _buildAppBar(),
+        // appBar: AppBar(title: Text("BodyBody"), centerTitle: true),
         body: _buildBody(),
       )
     );
