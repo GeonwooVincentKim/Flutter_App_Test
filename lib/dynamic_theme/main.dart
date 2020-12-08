@@ -2,6 +2,7 @@ import 'package:dynamic_theme/dynamic_theme.dart';
 import 'package:dynamic_theme/theme_switcher_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app_test/dynamic_theme/body.dart';
+import 'package:flutter_app_test/dynamic_theme/dynamic_provider_theme.dart';
 import 'package:flutter_app_test/dynamic_theme/test.dart';
 import 'package:provider/provider.dart';
 
@@ -12,12 +13,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        
+        ChangeNotifierProvider(create: (_) => DynamicThemeProvider())
       ],
       child: DynamicTheme(
         defaultBrightness: Brightness.light,
         data: (brightness) => ThemeData(
-          primarySwatch: Colors.indigo,
+          primarySwatch: Colors.amber,
           brightness: brightness,
         ),
         themedWidgetBuilder: (context, theme) {

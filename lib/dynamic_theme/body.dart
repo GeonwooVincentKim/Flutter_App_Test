@@ -1,6 +1,9 @@
 import 'package:dynamic_theme/dynamic_theme.dart';
 import 'package:dynamic_theme/theme_switcher_widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_app_test/dynamic_theme/drawer.dart';
+import 'package:flutter_app_test/dynamic_theme/dynamic_provider_theme.dart';
+import 'package:provider/provider.dart';
 
 
 class Body extends StatefulWidget {
@@ -15,18 +18,20 @@ class _BodyState extends State<Body> {
   bool _isChange = true;
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<DynamicThemeProvider>(context); 
     return Scaffold(
       appBar: AppBar(
         title: Text("Easy Theme"),
       ),
+      drawer: TestSideMenu(),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Switch(
-              value: _isChange,
-              onChanged: (state) => setState((){_isChange = state;}),
-            ),
+            // Switch(
+            //   value: _isChange,
+            //   onChanged: (state) => setState((){_isChange = state;}),
+            // ),
             RaisedButton(
               onPressed: changeBrightness,
               child: const Text("Change brightness"),
