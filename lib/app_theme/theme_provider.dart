@@ -10,9 +10,9 @@ class MyApp extends StatelessWidget {
       saveThemesOnChange: true,
       loadThemeOnInit: true,
       themes: <AppTheme>[
-        // AppTheme.light(),
-        // AppTheme.dark(),
-        customAppTheme(),
+        AppTheme.light(),
+        AppTheme.dark(),
+        // customAppTheme(),
         customAppTheme(),
 
         // customAppTheme() ? darkTheme : lightTheme,
@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
   }
 }
 
-final darkTheme = ThemeData(
+ThemeData darkTheme = ThemeData(
   primaryColor: Colors.black,
   brightness: Brightness.dark,
   bottomAppBarColor: Colors.blue,
@@ -35,7 +35,7 @@ final darkTheme = ThemeData(
   textSelectionColor: Colors.teal
 );
 
-final lightTheme = ThemeData(
+ThemeData lightTheme = ThemeData(
   primaryColor: Color(0xFFFBC02D),
   brightness: Brightness.light,
   buttonColor: Color(0xFFFFAB91),
