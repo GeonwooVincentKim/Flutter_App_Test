@@ -15,12 +15,55 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (_) => DynamicThemeProvider())
       ],
-      child: DynamicTheme(
+      child: MyAppSub(),
+      // child: DynamicTheme(
+      //   defaultBrightness: Brightness.light,
+      //   data: (brightness) => ThemeData(
+      //     primarySwatch: Colors.amber,
+      //     brightness: brightness,
+      //   ),
+      //   // data: (brightness) => darkTheme,
+      //   themedWidgetBuilder: (context, theme) {
+      //     return MaterialApp(
+      //       title: 'Flutter Demo',
+      //       theme: theme,
+      //       initialRoute: "/",
+      //       routes: {
+      //         "/": (context) => Body(title: "Flutter Demo Home Page"),
+      //       },
+      //       onGenerateRoute: (settings) {
+      //         final List<String> routeGenerator = settings.name.split("/");
+      //         if(routeGenerator[0] != '') return null;
+      //         if(routeGenerator[1] == 'test') {
+      //           String subRouteID = routeGenerator[2];
+      //           return MaterialPageRoute(builder: (BuildContext context) => Test(testID: subRouteID));
+      //         }
+      //       },
+      //       onUnknownRoute: (settings) => MaterialPageRoute(builder: (BuildContext context) => Body()),
+      //     );
+      //   }
+      // )
+    );
+  }
+}
+
+class MyAppSub extends StatelessWidget{
+  @override
+  Widget build(BuildContext context) {
+    final themeProvider = Provider.of<DynamicThemeProvider>(context);
+    return DynamicTheme(
         defaultBrightness: Brightness.light,
+        // defaultBrightness: lightTheme,
         data: (brightness) => ThemeData(
           primarySwatch: Colors.amber,
+          // primaryColor: Colors.black,
+          // bottomAppBarColor: Colors.blue,
+          // buttonColor: Colors.cyan[300],
+          // scaffoldBackgroundColor: Color(0xFF212121),
+          // textSelectionColor: Colors.teal,
           brightness: brightness,
         ),
+        // data: (brightness) => themeProvider.getDarkMode() ? darkTheme : lightTheme,
         themedWidgetBuilder: (context, theme) {
           return MaterialApp(
             title: 'Flutter Demo',
@@ -40,7 +83,7 @@ class MyApp extends StatelessWidget {
             onUnknownRoute: (settings) => MaterialPageRoute(builder: (BuildContext context) => Body()),
           );
         }
-      )
-    );
+      );
   }
+
 }

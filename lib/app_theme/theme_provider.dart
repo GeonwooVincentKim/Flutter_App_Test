@@ -10,9 +10,12 @@ class MyApp extends StatelessWidget {
       saveThemesOnChange: true,
       loadThemeOnInit: true,
       themes: <AppTheme>[
-        AppTheme.light(),
-        AppTheme.dark(),
+        // AppTheme.light(),
+        // AppTheme.dark(),
         customAppTheme(),
+        customAppTheme(),
+
+        // customAppTheme() ? darkTheme : lightTheme,
       ],
       child: MaterialApp(
         home: ThemeConsumer(
@@ -23,17 +26,38 @@ class MyApp extends StatelessWidget {
   }
 }
 
+final darkTheme = ThemeData(
+  primaryColor: Colors.black,
+  brightness: Brightness.dark,
+  bottomAppBarColor: Colors.blue,
+  buttonColor: Colors.cyan[300],
+  scaffoldBackgroundColor: Color(0xFF212121),
+  textSelectionColor: Colors.teal
+);
+
+final lightTheme = ThemeData(
+  primaryColor: Color(0xFFFBC02D),
+  brightness: Brightness.light,
+  buttonColor: Color(0xFFFFAB91),
+  bottomAppBarColor: Colors.blue,
+  scaffoldBackgroundColor: Color(0xFFFFF9C4),
+  accentColor: Colors.blue,
+);
+
 AppTheme customAppTheme() {
   return AppTheme(
     id: "custom_theme",
     description: "Custom Color Scheme",
-    data: ThemeData(
-      accentColor: Colors.yellow,
-      primaryColor: Colors.red,
-      scaffoldBackgroundColor: Colors.yellow[200],
-      buttonColor: Colors.amber,
-      dialogBackgroundColor: Colors.yellow,
-    ),
+    data: AppTheme.dark() != null ? darkTheme : lightTheme,
+    // data: darkTheme ?? lightTheme
+    // data: ThemeDatadarkTheme ? lightTheme
+    // data: ThemeData(
+    //   accentColor: Colors.yellow,
+    //   primaryColor: Colors.red,
+    //   scaffoldBackgroundColor: Colors.yellow[200],
+    //   buttonColor: Colors.amber,
+    //   dialogBackgroundColor: Colors.yellow,
+    // ),
   );
 }
 
@@ -46,6 +70,9 @@ class HomePage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            // Switch(
+            //   value: ThemeProvider.controllerOf().nextTheme(),
+            // )
             RaisedButton(
               child: Text("Next Theme"),
               onPressed: ThemeProvider.controllerOf(context).nextTheme,
