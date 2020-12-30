@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-void main() => runApp(MyApp());
+void main() => runApp(MyTapSample());
 
 
 class MyTapSample extends StatefulWidget {
@@ -25,37 +25,40 @@ class _MyTapSampleState extends State<MyTapSample>
 
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
-      appBar: new AppBar(
-        title: new Text("Pages"),
-        backgroundColor: Colors.lime,
-        bottom: new TabBar(
-          controller: ctr,
-          tabs: <Tab>[
-            new Tab(icon: new Icon(Icons.arrow_forward)),
-            new Tab(icon: new Icon(Icons.arrow_downward)),
-            new Tab(icon: new Icon(Icons.arrow_back)),
-          ],
-        ),
-      ),
-      bottomNavigationBar: new Material(
-          color: Colors.pinkAccent,
-          child: new TabBar(
+    return MaterialApp(
+      title: "Text",
+      home: Scaffold(
+        appBar: new AppBar(
+          title: new Text("Pages"),
+          backgroundColor: Colors.lime,
+          bottom: new TabBar(
             controller: ctr,
             tabs: <Tab>[
               new Tab(icon: new Icon(Icons.arrow_forward)),
               new Tab(icon: new Icon(Icons.arrow_downward)),
               new Tab(icon: new Icon(Icons.arrow_back)),
             ],
-          )),
-      body: new TabBarView(
-        controller: ctr,
-        children: <Widget>[
-          new Page1(),
-          new Page2(),
-          new Page3(),
-        ],
-      ),
+          ),
+        ),
+        bottomNavigationBar: new Material(
+            color: Colors.pinkAccent,
+            child: new TabBar(
+              controller: ctr,
+              tabs: <Tab>[
+                new Tab(icon: new Icon(Icons.arrow_forward)),
+                new Tab(icon: new Icon(Icons.arrow_downward)),
+                new Tab(icon: new Icon(Icons.arrow_back)),
+              ],
+            )),
+        body: new TabBarView(
+          controller: ctr,
+          children: <Widget>[
+            new Page1(),
+            new Page2(),
+            new Page3(),
+          ],
+        ),
+      )
     );
   }
 }
@@ -98,41 +101,38 @@ class _MyInputTextState extends State<MyInputText> {
   }
 }
 
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: "AppTest",
-      home: Scaffold(
-        appBar: new AppBar(
-            title: new Text("MyApp"), backgroundColor: Colors.greenAccent),
-        body: new Container(
-          child: new Center(
-            child: new Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                new IconButton(
-                  icon: new Icon(Icons.account_balance, color: Colors.lime),
-                  iconSize: 100.0,
-                  onPressed: () {
-                    Navigator.pushNamed(context, "/Page1");
-                  },
-                ),
-                new Text(
-                  "MY App",
-                  style: new TextStyle(
-                    fontSize: 50.0,
-                    color: Colors.red,
-                  ),
-                )
-              ],
-            ),
-          ),
-        ),
-      )
-    );
-  }
-}
+// class MyApp extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: new AppBar(
+//           title: new Text("MyApp"), backgroundColor: Colors.greenAccent),
+//       body: new Container(
+//         child: new Center(
+//           child: new Column(
+//             mainAxisAlignment: MainAxisAlignment.center,
+//             children: <Widget>[
+//               new IconButton(
+//                 icon: new Icon(Icons.account_balance, color: Colors.lime),
+//                 iconSize: 100.0,
+//                 onPressed: () {
+//                   Navigator.pushNamed(context, "/Page1");
+//                 },
+//               ),
+//               new Text(
+//                 "MY App",
+//                 style: new TextStyle(
+//                   fontSize: 50.0,
+//                   color: Colors.red,
+//                 ),
+//               )
+//             ],
+//           ),
+//         ),
+//       ),
+//     );
+//   }
+// }
 
 class Page1 extends StatelessWidget { 
   @override 
@@ -157,7 +157,7 @@ class Page2 extends StatelessWidget {
         child: new Icon( 
           Icons.access_alarm, 
           size: 200, 
-          color: Colors.red, 
+          color: Colors.orange, 
           ), 
         ), 
       ); 
@@ -170,9 +170,9 @@ class Page3 extends StatelessWidget {
     return Container( 
       child: new Center( 
         child: new Icon( 
-          Icons.access_alarm, 
+          Icons.accessible_forward, 
           size: 200, 
-          color: Colors.red, 
+          color: Colors.green, 
           ), 
         ), 
       ); 
