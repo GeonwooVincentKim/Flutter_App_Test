@@ -63,43 +63,43 @@ class _MyTapSampleState extends State<MyTapSample>
   }
 }
 
-class MyInputText extends StatefulWidget {
-  @override
-  _MyInputTextState createState() => _MyInputTextState();
-}
+// class MyInputText extends StatefulWidget {
+//   @override
+//   _MyInputTextState createState() => _MyInputTextState();
+// }
 
-class _MyInputTextState extends State<MyInputText> {
-  String data = "";
+// class _MyInputTextState extends State<MyInputText> {
+//   String data = "";
 
-  @override
-  Widget build(BuildContext context) {
-    return new Scaffold(
-      appBar: new AppBar(
-        title: new Text("My Input Text"),
-      ),
-      body: new Container(
-        child: new Center(
-          child: new Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              new TextField(
-                decoration: new InputDecoration(
-                  hintText: "여기에 입력",
-                ),
-                onSubmitted: (String str) {
-                  setState(() {
-                    data = str;
-                  });
-                },
-              ),
-              new Text(data),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     return new Scaffold(
+//       appBar: new AppBar(
+//         title: new Text("My Input Text"),
+//       ),
+//       body: new Container(
+//         child: new Center(
+//           child: new Column(
+//             mainAxisAlignment: MainAxisAlignment.center,
+//             children: <Widget>[
+//               new TextField(
+//                 decoration: new InputDecoration(
+//                   hintText: "여기에 입력",
+//                 ),
+//                 onSubmitted: (String str) {
+//                   setState(() {
+//                     data = str;
+//                   });
+//                 },
+//               ),
+//               new Text(data),
+//             ],
+//           ),
+//         ),
+//       ),
+//     );
+//   }
+// }
 
 // class MyApp extends StatelessWidget {
 //   @override
