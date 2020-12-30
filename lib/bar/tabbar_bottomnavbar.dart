@@ -20,12 +20,14 @@ class MyHomePage extends StatefulWidget {
 
 class MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateMixin {
   TabController _controller;
+  PageController _pageController;
   int _index;
 
   @override
   void initState() {
     super.initState();
     _controller = new TabController(length: 4, vsync: this);
+    _pageController = new PageController(initialPage: 0, keepPage: true);
     _index = 0;
   }
 
@@ -55,6 +57,7 @@ class MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateMi
           onTap: (int _index) {
             setState(() {
               this._index = _index;
+              // _pageController.animateToPage(_index, duration: Duration(milliseconds: 500), curve: Curves.ease);
             });
           },
           items: <BottomNavigationBarItem>[
